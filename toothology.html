@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toothology – Premium Dental Care, Lahore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===================== RESET & VARS ===================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:#07101E;
+  --navy2:#0C1A2E;
+  --navy3:#0E2040;
+  --teal:#00D4B8;
+  --teal2:#5EE8D6;
+  --teal3:#003D36;
+  --white:#FFFFFF;
+  --off:#EAF2FF;
+  --muted:rgba(255,255,255,0.55);
+  --dim:rgba(255,255,255,0.08);
+  --border:rgba(0,212,184,0.18);
+  --gold:#FFD166;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --ff-d:'Playfair Display',Georgia,serif;
+  --ff-b:'Space Grotesk','Segoe UI',sans-serif;
+  --ff-t:'DM Sans','Segoe UI',sans-serif;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy);
+  color:var(--white);
+  font-family:var(--ff-t);
+  overflow-x:hidden;
+  line-height:1.65;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ===================== NAV ===================== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:1.2rem 4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,backdrop-filter .4s,box-shadow .4s;
+}
+nav.scrolled{
+  background:rgba(7,16,30,0.88);
+  backdrop-filter:blur(22px) saturate(1.4);
+  box-shadow:0 1px 0 var(--border);
+}
+.nav-logo{
+  font-family:var(--ff-b);font-size:1.45rem;font-weight:700;
+  text-decoration:none;color:var(--white);letter-spacing:-.02em;
+}
+.nav-logo span{color:var(--teal)}
+.nav-links{list-style:none;display:flex;gap:2.2rem;align-items:center}
+.nav-links a{
+  font-family:var(--ff-b);font-size:.82rem;font-weight:500;
+  text-decoration:none;color:var(--muted);
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--teal)}
+.nav-cta{
+  background:var(--teal)!important;
+  color:var(--navy)!important;
+  padding:.55rem 1.4rem;border-radius:50px;
+  font-weight:600!important;
+  transition:background .2s,transform .2s,box-shadow .2s!important;
+}
+.nav-cta:hover{background:var(--teal2)!important;transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,212,184,.35)!important}
+
+/* ===================== HERO ===================== */
+#hero{
+  position:relative;min-height:95vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:0;
+  padding:9rem 4rem 5rem;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 60% at 70% 50%,rgba(0,80,70,.32) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 15% 80%,rgba(0,20,60,.45) 0%,transparent 55%),
+    radial-gradient(ellipse 30% 30% at 80% 10%,rgba(0,212,184,.06) 0%,transparent 50%);
+}
+.hero-content{position:relative;z-index:2;max-width:600px}
+
+.hero-badge-pill{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:rgba(0,212,184,.1);border:1px solid var(--border);
+  color:var(--teal);font-family:var(--ff-b);
+  font-size:.78rem;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;
+  padding:.42rem 1.1rem;border-radius:50px;
+  margin-bottom:1.6rem;
+}
+.badge-dot{
+  width:7px;height:7px;background:var(--teal);border-radius:50%;
+  animation:glow 2s ease-in-out infinite;
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(0,212,184,.45)}
+  50%{box-shadow:0 0 0 7px rgba(0,212,184,0)}
+}
+
+.hero-h1{
+  font-family:var(--ff-d);
+  font-size:clamp(2.6rem,5vw,4.4rem);
+  font-weight:900;line-height:1.04;
+  letter-spacing:-.025em;
+  margin-bottom:1.5rem;
+}
+.hero-h1 em{font-style:italic;color:var(--teal)}
+
+.hero-sub{
+  font-size:1.08rem;color:var(--muted);
+  line-height:1.75;max-width:440px;margin-bottom:2.6rem;
+}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+
+.btn-p{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--teal);color:var(--navy);
+  font-family:var(--ff-b);font-weight:600;font-size:.95rem;
+  padding:.9rem 2.1rem;border-radius:50px;text-decoration:none;
+  border:none;cursor:pointer;
+  box-shadow:0 0 40px rgba(0,212,184,.22);
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.btn-p:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 10px 44px rgba(0,212,184,.45)}
+
+.btn-s{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--white);
+  font-family:var(--ff-b);font-weight:500;font-size:.95rem;
+  padding:.9rem 1.6rem;border-radius:50px;text-decoration:none;
+  border:1px solid rgba(255,255,255,.18);
+  transition:border-color .2s,color .2s;
+}
+.btn-s:hover{border-color:var(--teal);color:var(--teal)}
+
+.hero-3d{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  height:520px;
+}
+#tooth-canvas{width:100%;max-width:480px;height:480px;display:block}
+
+.hero-stats{
+  position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:0;z-index:3;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(24px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;overflow:hidden;
+}
+.hero-stat{
+  padding:1.2rem 2.4rem;text-align:center;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.hero-stat:last-child{border-right:none}
+.hero-stat strong{
+  display:block;font-family:var(--ff-b);
+  font-size:1.5rem;font-weight:700;color:var(--teal);
+  line-height:1.1;margin-bottom:.2rem;
+}
+.hero-stat span{font-size:.78rem;color:var(--muted);font-weight:500}
+
+/* ===================== SHARED LAYOUT ===================== */
+.wrap{max-width:1200px;margin:0 auto;padding:0 4rem}
+.sec{padding:7rem 0}
+
+.eyebrow{
+  display:inline-block;
+  font-family:var(--ff-b);font-size:.78rem;font-weight:600;
+  color:var(--teal);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.sec-h{
+  font-family:var(--ff-d);
+  font-size:clamp(1.9rem,3.8vw,3rem);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-.02em;margin-bottom:1rem;
+}
+.sec-h em{font-style:italic;color:var(--teal)}
+.sec-p{color:var(--muted);font-size:1.05rem;max-width:520px;line-height:1.72;margin-bottom:3rem}
+
+/* ===================== SERVICES ===================== */
+#services{background:var(--navy2)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.4rem;
+}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+
+.svc-card{perspective:1100px;height:230px;cursor:default}
+.svc-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .65s var(--ease);
+}
+.svc-card:hover .svc-inner{transform:rotateY(180deg)}
+.svc-face{
+  position:absolute;width:100%;height:100%;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:18px;padding:2rem;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.svc-front{
+  background:var(--dim);
+  border:1px solid rgba(255,255,255,.09);
+  transition:border-color .3s;
+}
+.svc-card:hover .svc-front{border-color:rgba(0,212,184,.25)}
+.svc-back{
+  background:var(--teal);
+  transform:rotateY(180deg);
+  justify-content:center;align-items:flex-start;
+}
+.svc-ico{font-size:2.4rem;margin-bottom:.9rem;display:block}
+.svc-name{font-family:var(--ff-b);font-size:1.1rem;font-weight:600;margin-bottom:.25rem}
+.svc-tag{font-size:.78rem;color:var(--muted)}
+.svc-back .svc-name{color:var(--navy);font-size:1.2rem;margin-bottom:.8rem}
+.svc-desc{font-size:.92rem;color:rgba(7,16,30,.8);line-height:1.65;font-family:var(--ff-t)}
+
+/* ===================== WHY US ===================== */
+#why{background:var(--navy)}
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr;gap:1.5rem}}
+.why-card{
+  padding:2.2rem;border-radius:18px;
+  background:var(--dim);border:1px solid rgba(255,255,255,.07);
+  transition:border-color .3s,transform .3s;
+}
+.why-card:hover{border-color:var(--border);transform:translateY(-4px)}
+.why-num{
+  font-family:var(--ff-d);font-size:3rem;font-weight:900;
+  color:rgba(0,212,184,.2);line-height:1;margin-bottom:1rem;
+}
+.why-title{font-family:var(--ff-b);font-size:1.05rem;font-weight:600;margin-bottom:.6rem}
+.why-text{font-size:.9rem;color:var(--muted);line-height:1.7}
+
+/* ===================== REVIEWS ===================== */
+#reviews{background:var(--navy2)}
+.rating-row{
+  display:flex;align-items:center;gap:1.5rem;
+  margin-bottom:3rem;
+}
+.rating-big{
+  font-family:var(--ff-b);font-size:4rem;font-weight:700;
+  color:var(--white);line-height:1;
+}
+.rating-info .stars{color:var(--gold);font-size:1.2rem;letter-spacing:.08em;display:block;margin-bottom:.3rem}
+.rating-info span{font-size:.85rem;color:var(--muted)}
+.rev-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.4rem;
+}
+@media(max-width:700px){.rev-grid{grid-template-columns:1fr}}
+.rev-card{
+  background:var(--dim);border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;padding:2rem;
+  transition:border-color .3s,transform .3s;
+}
+.rev-card:hover{border-color:rgba(0,212,184,.28);transform:translateY(-4px)}
+.rev-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.rev-av{
+  width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-b);font-weight:700;font-size:1rem;
+  color:var(--navy);
+}
+.rev-name{font-family:var(--ff-b);font-weight:600;font-size:.95rem;margin-bottom:.15rem}
+.rev-meta{font-size:.78rem;color:var(--muted)}
+.rev-stars{color:var(--gold);font-size:.9rem;margin-top:.1rem}
+.rev-q{
+  font-size:.95rem;color:rgba(255,255,255,.8);
+  line-height:1.72;font-style:italic;
+  position:relative;padding-left:1.4rem;
+}
+.rev-q::before{
+  content:'\201C';
+  position:absolute;left:0;top:-.35rem;
+  font-family:var(--ff-d);font-size:2.8rem;
+  color:var(--teal);line-height:1;
+}
+.rev-owner{
+  margin-top:1rem;font-size:.82rem;
+  color:var(--teal);font-family:var(--ff-b);
+  padding-top:.9rem;border-top:1px solid var(--dim);
+}
+
+/* ===================== HOURS & CONTACT ===================== */
+#contact{background:var(--navy)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:3rem}}
+
+.hours-tbl{width:100%;border-collapse:separate;border-spacing:0 .35rem}
+.hours-tbl td{padding:.7rem 1rem;font-size:.92rem}
+.hours-tbl td:first-child{color:var(--muted);font-weight:500;font-family:var(--ff-b);font-size:.85rem;width:55%}
+.hours-tbl td:last-child{color:var(--white);font-weight:500}
+.hours-tbl .today td{background:rgba(0,212,184,.1);border-radius:10px}
+.hours-tbl .today td:first-child{color:var(--teal)}
+.hours-tbl .closed td:last-child{color:rgba(255,100,100,.7)}
+
+.cinfo{display:flex;flex-direction:column;gap:1.6rem}
+.ci{display:flex;align-items:flex-start;gap:1.1rem}
+.ci-ic{
+  width:46px;height:46px;flex-shrink:0;
+  background:rgba(0,212,184,.1);border:1px solid var(--border);
+  border-radius:13px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.ci strong{
+  display:block;font-family:var(--ff-b);font-size:.78rem;font-weight:600;
+  color:var(--teal);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.3rem;
+}
+.ci a,.ci p{
+  font-size:.95rem;color:var(--muted);text-decoration:none;
+  line-height:1.6;transition:color .2s;
+}
+.ci a:hover{color:var(--white)}
+
+/* ===================== CTA BAND ===================== */
+.cta-band{
+  padding:6rem 4rem;text-align:center;
+  background:linear-gradient(135deg,rgba(0,212,184,.12),rgba(0,60,140,.14));
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.cta-band .sec-h{margin:0 auto 1rem;max-width:700px}
+.cta-band p{color:var(--muted);margin-bottom:2.6rem;font-size:1.05rem}
+
+/* ===================== FOOTER ===================== */
+footer{
+  background:var(--navy);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:3rem 4rem;
+}
+.foot-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;
+}
+.foot-logo{font-family:var(--ff-b);font-size:1.2rem;font-weight:700}
+.foot-logo span{color:var(--teal)}
+.foot-copy{font-size:.82rem;color:var(--muted)}
+.foot-pill{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(0,212,184,.1);border:1px solid var(--border);
+  border-radius:50px;padding:.3rem .9rem;
+  font-size:.78rem;color:var(--teal);font-family:var(--ff-b);font-weight:500;
+}
+
+/* ===================== SCROLL REVEAL ===================== */
+.r{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.r.on{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:.1s}.r.d2{transition-delay:.2s}.r.d3{transition-delay:.3s}
+.r.d4{transition-delay:.4s}.r.d5{transition-delay:.5s}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:900px){
+  nav{padding:1.1rem 2rem}
+  #hero{grid-template-columns:1fr;padding:8rem 2rem 5rem}
+  .hero-3d{display:none}
+  .hero-stats{flex-wrap:wrap;position:static;transform:none;margin-top:3rem;border-radius:14px}
+  .hero-stat{padding:1rem 1.5rem;flex:1 1 130px}
+  .wrap{padding:0 2rem}
+  .cta-band{padding:4rem 2rem}
+  footer{padding:2.5rem 2rem}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav id="nav">
+  <a href="#" class="nav-logo">TOOTH<span>OLOGY</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Hours</a></li>
+    <li><a href="tel:+923260866651" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge-pill r">
+      <span class="badge-dot"></span>
+      Premium Dental Care — Lahore
+    </div>
+    <h1 class="hero-h1 r d1">
+      Where <em>smiles</em><br>are crafted<br>with precision
+    </h1>
+    <p class="hero-sub r d2">
+      Expert dental and wellness care at Khayaban-e-Amin. From gentle cleanings to advanced root canals — delivered with skill and compassion.
+    </p>
+    <div class="hero-btns r d3">
+      <a href="tel:+923260866651" class="btn-p">📞 Book Appointment</a>
+      <a href="#services" class="btn-s">Explore Services →</a>
+    </div>
+  </div>
+
+  <div class="hero-3d">
+    <canvas id="tooth-canvas"></canvas>
+  </div>
+
+  <div class="hero-stats r">
+    <div class="hero-stat">
+      <strong>4.9 ★</strong><span>Google Rating</span>
+    </div>
+    <div class="hero-stat">
+      <strong>170+</strong><span>Patient Reviews</span>
+    </div>
+    <div class="hero-stat">
+      <strong>12–10 PM</strong><span>Open Daily</span>
+    </div>
+    <div class="hero-stat">
+      <strong>♀ Owned</strong><span>Women-Led Clinic</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services">
+  <div class="wrap sec">
+    <span class="eyebrow r">What We Offer</span>
+    <h2 class="sec-h r d1">Comprehensive dental<br><em>& wellness care</em></h2>
+    <p class="sec-p r d2">Hover each card to discover more.</p>
+
+    <div class="svc-grid">
+      <div class="svc-card r d1">
+        <div class="svc-inner">
+          <div class="svc-face svc-front">
+            <span class="svc-ico">🦷</span>
+            <div class="svc-name">Scaling & Polishing</div>
+            <div class="svc-tag">Preventive Care</div>
+          </div>
+          <div class="svc-face svc-back">
+            <div class="svc-name">Scaling & Polishing</div>
+            <p class="svc-desc">Professional removal of plaque and tartar, followed by a smooth polish for healthier gums and a brighter smile.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card r d2">
+        <div class="svc-inner">
+          <div class="svc-face svc-front">
+            <span class="svc-ico">🔬</span>
+            <div class="svc-name">Root Canal Treatment</div>
+            <div class="svc-tag">Restorative</div>
+          </div>
+          <div class="svc-face svc-back">
+            <div class="svc-name">Root Canal Treatment</div>
+            <p class="svc-desc">Pain-free RCT by experienced dentists. Save your natural tooth and restore complete comfort and function.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card r d3">
+        <div class="svc-inner">
+          <div class="svc-face svc-front">
+            <span class="svc-ico">💎</span>
+            <div class="svc-name">Dental Fillings</div>
+            <div class="svc-tag">Restorative</div>
+          </div>
+          <div class="svc-face svc-back">
+            <div class="svc-name">Dental Fillings</div>
+            <p class="svc-desc">Tooth-coloured composite fillings that blend seamlessly, restoring your tooth's strength and natural appearance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card r d1">
+        <div class="svc-inner">
+          <div class="svc-face svc-front">
+            <span class="svc-ico">⚡</span>
+            <div class="svc-name">Tooth Extraction</div>
+            <div class="svc-tag">Oral Surgery</div>
+          </div>
+          <div class="svc-face svc-back">
+            <div class="svc-name">Tooth Extraction</div>
+            <p class="svc-desc">Gentle and efficient extractions with minimal discomfort, including wisdom tooth and surgical extractions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card r d2">
+        <div class="svc-inner">
+          <div class="svc-face svc-front">
+            <span class="svc-ico">🏃</span>
+            <div class="svc-name">Physiotherapy</div>
+            <div class="svc-tag">Rehabilitation</div>
+          </div>
+          <div class="svc-face svc-back">
+            <div class="svc-name">Physiotherapy</div>
+            <p class="svc-desc">Expert rehab by Dr. Aman Naveed — post-surgical recovery, spine care, and musculoskeletal treatment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card r d3">
+        <div class="svc-inner">
+          <div class="svc-face svc-front">
+            <span class="svc-ico">👑</span>
+            <div class="svc-name">Crowns & Caps</div>
+            <div class="svc-tag">Prosthodontics</div>
+          </div>
+          <div class="svc-face svc-back">
+            <div class="svc-name">Crowns & Caps</div>
+            <p class="svc-desc">High-quality crowns that protect damaged teeth and restore their natural look, feel, and full function.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY US ========== -->
+<section id="why">
+  <div class="wrap sec">
+    <span class="eyebrow r">Why Patients Choose Us</span>
+    <h2 class="sec-h r d1">Excellence you can<br><em>feel & trust</em></h2>
+
+    <div class="why-grid">
+      <div class="why-card r d1">
+        <div class="why-num">01</div>
+        <div class="why-title">Experienced Specialists</div>
+        <p class="why-text">Our team includes dedicated dentists and a certified physiotherapist, each a specialist in their field — not generalists.</p>
+      </div>
+      <div class="why-card r d2">
+        <div class="why-num">02</div>
+        <div class="why-title">Reasonable Pricing</div>
+        <p class="why-text">Premium care at fair prices. Patients consistently praise our value compared to other leading clinics in Lahore.</p>
+      </div>
+      <div class="why-card r d3">
+        <div class="why-num">03</div>
+        <div class="why-title">Women-Owned Practice</div>
+        <p class="why-text">A women-led clinic that prioritises patient comfort, respectful care, and a welcoming environment for all families.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REVIEWS ========== -->
+<section id="reviews">
+  <div class="wrap sec">
+    <span class="eyebrow r">What Patients Say</span>
+    <h2 class="sec-h r d1">4.9 stars from<br><em>170+ Google reviews</em></h2>
+
+    <div class="rating-row r d2">
+      <div class="rating-big">4.9</div>
+      <div class="rating-info">
+        <span class="stars">★★★★★</span>
+        <strong style="font-family:var(--ff-b);font-size:.95rem">Excellent</strong><br>
+        <span>170 verified Google reviews</span>
+      </div>
+    </div>
+
+    <div class="rev-grid">
+      <div class="rev-card r d1">
+        <div class="rev-head">
+          <div class="rev-av" style="background:linear-gradient(135deg,#00D4B8,#006EBD)">A</div>
+          <div>
+            <div class="rev-name">Anie Shah</div>
+            <div class="rev-meta">4 reviews</div>
+            <div class="rev-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="rev-q">I can confidently vouch for Dr. Maham's exceptional clinical skills and unwavering professionalism. Her dedication to patient care is evident in every interaction.</p>
+        <div class="rev-owner">🩺 Clinic replied: Thank you for such a kind review!</div>
+      </div>
+
+      <div class="rev-card r d2">
+        <div class="rev-head">
+          <div class="rev-av" style="background:linear-gradient(135deg,#7B2FBE,#00D4B8)">I</div>
+          <div>
+            <div class="rev-name">Irfan Ahmad</div>
+            <div class="rev-meta">4 reviews · 1 photo</div>
+            <div class="rev-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="rev-q">Dr. Aman Naveed is one of the best physiotherapists in Lahore. Visited after my mother's major spine surgery — she took excellent care throughout recovery. Kind, professional, and genuinely dedicated.</p>
+        <div class="rev-owner">🩺 Clinic replied: Thank you for your review!</div>
+      </div>
+
+      <div class="rev-card r d3">
+        <div class="rev-head">
+          <div class="rev-av" style="background:linear-gradient(135deg,#F7B731,#00D4B8)">A</div>
+          <div>
+            <div class="rev-name">Abdullah Rehman</div>
+            <div class="rev-meta">Local Guide · 49 reviews · 21 photos</div>
+            <div class="rev-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="rev-q">Dr. Abdullah Arslan is a very good dentist. I've had 2 complete RCTs with caps, a tooth extraction, fillings, and scaling done by him. Excellent treatment, and prices are very reasonable compared to the market.</p>
+      </div>
+
+      <div class="rev-card r d4">
+        <div class="rev-head">
+          <div class="rev-av" style="background:linear-gradient(135deg,#E84393,#00D4B8)">W</div>
+          <div>
+            <div class="rev-name">Wasim Khan</div>
+            <div class="rev-meta">3 reviews</div>
+            <div class="rev-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="rev-q">Dr. Maham is a very good dentist. I've had 3 RCTs, along with fillings and scaling. Excellent treatment at very reasonable prices. All of my family members now visit Toothology.</p>
+        <div class="rev-owner">🩺 Clinic replied: Thank you for your valuable review!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+  <div class="wrap sec contact-grid">
+    <div>
+      <span class="eyebrow r">Opening Hours</span>
+      <h2 class="sec-h r d1">When to <em>visit us</em></h2>
+      <table class="hours-tbl r d2">
+        <tbody>
+          <tr><td>Monday</td><td>12:00 PM – 10:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>12:00 PM – 10:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>12:00 PM – 10:00 PM</td></tr>
+          <tr><td>Thursday</td><td>12:00 PM – 10:00 PM</td></tr>
+          <tr class="today"><td>Friday ✦ Today</td><td>12:00 PM – 10:00 PM</td></tr>
+          <tr><td>Saturday</td><td>12:00 PM – 10:00 PM</td></tr>
+          <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <span class="eyebrow r">Get In Touch</span>
+      <h2 class="sec-h r d1"><em>Contact</em> the clinic</h2>
+      <div class="cinfo r d2">
+        <div class="ci">
+          <div class="ci-ic">📍</div>
+          <div>
+            <strong>Address</strong>
+            <p>60 CCA Khayaban E Amin, Block A,<br>Lahore, 42000, Pakistan</p>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic">📞</div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+923260866651">+92 326 0866651</a>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic">⭐</div>
+          <div>
+            <strong>Google Rating</strong>
+            <p>4.9 stars · 170+ Reviews</p>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic">♀</div>
+          <div>
+            <strong>Recognition</strong>
+            <p>Women-Owned & Operated Clinic</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<div class="cta-band r">
+  <h2 class="sec-h">Ready for your best smile?</h2>
+  <p>Call us or visit — open Monday to Saturday, 12 PM to 10 PM.</p>
+  <a href="tel:+923260866651" class="btn-p">📞 Call +92 326 0866651</a>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">TOOTH<span>OLOGY</span></div>
+    <p class="foot-copy">© 2026 Toothology Dental Clinic · Lahore, Pakistan</p>
+    <div class="foot-pill">♀ Women-Owned Clinic</div>
+  </div>
+</footer>
+
+<!-- ========== THREE.JS ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* === 3D TOOTH ANIMATION === */
+(function(){
+  const cvs = document.getElementById('tooth-canvas');
+  if(!cvs || typeof THREE === 'undefined') return;
+
+  const W = 480, H = 480;
+  const renderer = new THREE.WebGLRenderer({canvas:cvs, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.shadowMap.enabled = false;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, W/H, 0.1, 100);
+  camera.position.set(0, 0.2, 5);
+  camera.lookAt(0, 0, 0);
+
+  /* ---- Tooth shape via Lathe ---- */
+  const pts = [
+    [0,.0],[.12,.02],[.16,.08],[.14,.18],[.2,.28],
+    [.24,.38],[.26,.52],[.25,.66],[.28,.82],[.26,.96],
+    [.2,1.08],[.13,1.18],[.06,1.24],[0,1.25]
+  ].map(([x,y]) => new THREE.Vector2(x,y));
+
+  const geo = new THREE.LatheGeometry(pts, 80);
+  const mat = new THREE.MeshPhongMaterial({
+    color:0xDFF0FF,
+    specular:0x00E5CC,
+    shininess:160,
+    emissive:0x002833,
+    emissiveIntensity:0.18,
+    transparent:true,
+    opacity:.98,
+  });
+  const tooth = new THREE.Mesh(geo, mat);
+  tooth.position.y = -0.55;
+  tooth.scale.setScalar(1.18);
+  scene.add(tooth);
+
+  /* ---- Particle cloud ---- */
+  const N = 280;
+  const pPos = new Float32Array(N*3);
+  const pSpeeds = new Float32Array(N);
+  for(let i=0;i<N;i++){
+    const th = Math.random()*Math.PI*2;
+    const ph = Math.acos(2*Math.random()-1);
+    const r  = 1.6 + Math.random()*1.6;
+    pPos[i*3]   = r*Math.sin(ph)*Math.cos(th);
+    pPos[i*3+1] = r*Math.cos(ph)*0.7;
+    pPos[i*3+2] = r*Math.sin(ph)*Math.sin(th);
+    pSpeeds[i]  = .4 + Math.random()*.6;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+  const pMat = new THREE.PointsMaterial({
+    color:0x00D4B8, size:.045, transparent:true, opacity:.65, sizeAttenuation:true
+  });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  /* ---- Lights ---- */
+  scene.add(new THREE.AmbientLight(0x1a3a5c, 0.7));
+  const L1 = new THREE.PointLight(0x00D4B8, 2.2, 12);
+  L1.position.set(2.5, 2, 3);
+  scene.add(L1);
+  const L2 = new THREE.PointLight(0xFFFFFF, 1.4, 12);
+  L2.position.set(-2, -1, 2);
+  scene.add(L2);
+  const L3 = new THREE.PointLight(0x004488, 1.1, 10);
+  L3.position.set(0, -3, -2);
+  scene.add(L3);
+
+  /* ---- Animate ---- */
+  let t = 0;
+  (function loop(){
+    requestAnimationFrame(loop);
+    t++;
+    tooth.rotation.y  += .006;
+    tooth.rotation.x   = Math.sin(t*.008)*.12;
+    tooth.position.y   = -0.55 + Math.sin(t*.025)*.08;
+    particles.rotation.y += .003;
+    particles.rotation.x += .0015;
+    L1.intensity = 2.2 + Math.sin(t*.05)*.5;
+    renderer.render(scene, camera);
+  })();
+
+  window.addEventListener('resize',()=>{
+    renderer.setSize(W,H);
+    camera.updateProjectionMatrix();
+  });
+})();
+
+/* === NAV SCROLL === */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled', window.scrollY>40);
+},{passive:true});
+
+/* === SCROLL REVEAL === */
+const items = document.querySelectorAll('.r');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('on'); io.unobserve(e.target)}
+  });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+items.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
